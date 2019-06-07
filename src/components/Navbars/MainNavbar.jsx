@@ -13,17 +13,18 @@ import {
   Col
 } from "reactstrap";
 
-class AdminNavbar extends React.Component {
+class MainNavbar extends React.Component {
   render() {
+    console.log(this.props.appearance)
     return (
       <>
         <Navbar
-          className="navbar-top navbar-horizontal navbar-dark"
+          className={`navbar-horizontal ${this.props.appearance == 'light' ? 'navbar-main navbar-light' : 'navbar navbar-top navbar-dark'}`}
           expand="md"
         >
           <Container className="px-4">
-            <NavbarBrand to="/" tag={Link}>
-              <img alt="..." src={require("assets/img/brand/tebimar-logo-white.png")} />
+            <NavbarBrand to="/main/home" tag={Link}>
+              <img alt="..." src={require(`assets/img/brand/tebimar-logo-${this.props.appearance == 'light' ? 'green' : 'white'}.png`)} />
             </NavbarBrand>
             <button className="navbar-toggler" id="navbar-collapse-main">
               <span className="navbar-toggler-icon" />
@@ -53,8 +54,14 @@ class AdminNavbar extends React.Component {
               <Nav className="ml-auto" navbar>
                 <NavItem>
                   <NavLink className="nav-link-icon" to="/" tag={Link}>
-                    <i className="ni ni-planet" />
-                    <span className="nav-link-inner--text">Dashboard</span>
+                    <span className="nav-link-inner--text">Procedures</span>
+                    &nbsp;<i className="fa fa-chevron-down" />
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink className="nav-link-icon" to="/" tag={Link}>
+                    <span className="nav-link-inner--text">Packages</span>
+                    &nbsp;<i className="fa fa-chevron-down" />
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -63,31 +70,20 @@ class AdminNavbar extends React.Component {
                     to="/auth/register"
                     tag={Link}
                   >
-                    <i className="ni ni-circle-08" />
-                    <span className="nav-link-inner--text">Register</span>
+                    <span className="nav-link-inner--text">Partner with us</span>
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink
-                    className="nav-link-icon"
-                    to="/auth/login"
-                    tag={Link}
-                  >
-                    <i className="ni ni-key-25" />
-                    <span className="nav-link-inner--text">Login</span>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className="nav-link-icon"
-                    to="/admin/user-profile"
-                    tag={Link}
-                  >
-                    <i className="ni ni-single-02" />
-                    <span className="nav-link-inner--text">Profile</span>
-                  </NavLink>
+                  <button type="button" className="btn btn-sm btn-secondary p-2 mt-2">
+                    Counsulation
+                  </button>
+                  <button type="button" className="btn btn-sm btn-success p-2 mt-2">
+                    <i className="fa fa-phone"></i>&nbsp;
+                    Call Now
+                  </button>
                 </NavItem>
               </Nav>
+              
             </UncontrolledCollapse>
           </Container>
         </Navbar>
@@ -96,4 +92,4 @@ class AdminNavbar extends React.Component {
   }
 }
 
-export default AdminNavbar;
+export default MainNavbar;

@@ -154,9 +154,9 @@ class Register extends React.Component {
                             <FormGroup>
                                 <InputGroup className="input-group-alternative mb-3">
 
-                                    <ReactPhoneInput buttonClass="phone-selector-dropdown" enableSearchField
+                                    <ReactPhoneInput buttonclassName="phone-selector-dropdown" enableSearchField
                                                      autoFormat={false}
-                                                     inputClass="phone-selector"
+                                                     inputclassName="phone-selector"
                                                      value={this.state.phone}
                                                      onChange={(value) => this._handleOnChange(value)}
 

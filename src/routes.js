@@ -5,6 +5,8 @@ import Register from "views/examples/Register.jsx";
 import Login from "views/examples/Login.jsx";
 import Tables from "views/examples/Tables.jsx";
 import Icons from "views/examples/Icons.jsx";
+import Home from "views/main/Home.jsx";
+import ChooseCity from "views/main/service/ChooseCity.jsx";
 
 var routes = [
   {
@@ -55,6 +57,20 @@ var routes = [
     icon: "ni ni-circle-08 text-pink",
     component: Register,
     layout: "/auth"
+  },
+  {
+    path: "/home",
+    name: "home",
+    icon: "ni ni-circle-08 text-pink",
+    component: Home,
+    layout: "/main"
+  },
+  {
+    path: "/service/choose-city",
+    name: " ChooseCity",
+    icon: "ni ni-circle-08 text-pink",
+    component:  ChooseCity,
+    layout: "/main"
   }
 ];
 export default routes;
