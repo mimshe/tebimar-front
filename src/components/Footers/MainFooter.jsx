@@ -57,7 +57,7 @@ class Footer extends React.Component {
                             placeholder="name@example.com"
                             />
                             <InputGroupAddon addonType="append">
-                            <Button color="success">Subscribe</Button>
+                            <Button color="t-default">Subscribe</Button>
                             </InputGroupAddon>
                         </InputGroup>
                     </div>

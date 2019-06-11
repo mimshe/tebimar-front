@@ -1,0 +1,46 @@
+.categories-box{
+    .Header{
+        .title{
+            color: $t-green;
+        }
+        .more{
+            color: $t-green;
+            &:hover{
+                cursor: pointer;
+                color: $t-yellow;
+            }
+        }
+    }
+    .content{
+        .item{
+            position: relative;
+            img{
+                border-radius: 10px;
+                width: 100%;
+            }
+            .title{
+                position: absolute;
+                bottom: 15px;
+                left: 0px;
+                color: $white;
+                padding: 0 0 0 24px;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0px;
+                    background: $t-green;
+                    width: 18px;
+                    height: 20px;
+                }
+                
+            }
+        }
+    }
+}
+
+.header-bg{
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+    height: 600px;
+}

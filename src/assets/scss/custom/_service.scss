@@ -4,7 +4,7 @@
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: $white;
     border-top-right-radius: 0.375rem;
     border-top-left-radius: 0.375rem;
     border-bottom-right-radius: 0.375rem;
@@ -17,9 +17,9 @@
                 float: left;
                 padding: 12px 30px;
                 &.active {
-                    border-bottom: solid 3px #00b414;
+                    border-bottom: solid 3px $t-green;
                     span{
-                        color: #00b414;
+                        color: $t-green;
                     }
                 }
                 span{
@@ -27,17 +27,18 @@
                 }
                 &.submit{
                     float: right;
-                    background-color: #00b414;
-                    border-bottom: solid 3px #00b414;
-                    color: white;
+                    background-color: $t-green;
+                    border-bottom: solid 3px $t-green;
+                    color: $white;
                     border-top-right-radius: 0.375rem;
                     border-bottom-right-radius: 0.375rem;
                     width: 100px;
                     text-align: center;
+                    cursor: pointer;
                     &:hover{
-                        background-color: #02ab15;
-                        border-bottom: solid 3px #02ab15;
-                        cursor: pointer;
+                        color: $t-yellow;
+                        border-bottom: solid 3px $t-green;
+                        @include box-shadow($btn-hover-box-shadow);
                     }
                 }
             }
@@ -50,7 +51,7 @@
     display: flex;
     flex-direction: column;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 0.375rem;
     box-shadow: 0 1px 6px 0px #00000040;
     .title{
@@ -70,7 +71,7 @@
     display: flex;
     flex-direction: column;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 0.375rem;
     box-shadow: 0 1px 6px 0px #00000040;
 }

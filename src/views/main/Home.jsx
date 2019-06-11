@@ -33,9 +33,49 @@ class Home extends React.Component {
     render() {
         return (
             <>
-            <Col lg="6" md="8">
+            <div className="mt-4">
+                <div className="categories-box">
+                    <div className="Header">
+                        <div className="d-flex Header">
+                            <h4 className="title p-2">Procedures</h4>
+                            <a className="more ml-auto p-2">
+                                All Procedures
+                                <i className="fa fa-chevron-right pl-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="content row">
+                        <Col lg="3" md="3">
+                            <div className="item">
+                                <img src={require("assets/img/img.jpg")} alt=""/>
+                                <h5 className="title">Title</h5>                            
+                            </div>
+                        </Col>
+                        <Col lg="3" md="3">
+                            <div className="item">
+                                <img src={require("assets/img/img.jpg")} alt=""/>
+                                <h5 className="title">Title</h5>                            
+                            </div>
+                        </Col>
+                        <Col lg="3" md="3">
+                            <div className="item">
+                                <img src={require("assets/img/img.jpg")} alt=""/>
+                                <h5 className="title">Title</h5>                            
+                            </div>
+                        </Col>
+                        <Col lg="3" md="3">
+                            <div className="item">
+                                <img src={require("assets/img/img.jpg")} alt=""/>
+                                <h5 className="title">Title</h5>                            
+                            </div>
+                        </Col>
+                    </div>
+                    
+                </div>
+            </div>
+            {/* <Col lg="6" md="8">
             test
-            </Col>
+            </Col> */}
             </>
         );
     }

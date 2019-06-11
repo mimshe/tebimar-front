@@ -31,7 +31,7 @@ class Navigation extends React.Component {
     render() {
         return (
             <>
-            <Col  lg="12" md="12">
+            <Col lg="12" md="12">
                 <div className="service-navigation mt-5 w-100">
                     <div className="content">
                     <ul>

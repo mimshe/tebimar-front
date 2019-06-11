@@ -10,17 +10,45 @@ import {
   Nav,
   Container,
   Row,
-  Col
+  Col,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem 
 } from "reactstrap";
+import NavDrop from "./NavDrop";
 
 class MainNavbar extends React.Component {
+
   render() {
+  const menuItem_Procedures = {
+    title: 'Procedures',
+    options:[
+      {
+        title:'option 1',
+        link:'/'
+      },
+      {
+        title:'option 2',
+        link:'/'
+      }
+    ]
+  };
+  const menuItem_Packages = {
+    title: 'Packages',
+    options:[
+      {
+        title:'p 1',
+        link:'/'
+      }
+    ]
+  };
     console.log(this.props.appearance)
     return (
       <>
         <Navbar
           className={`navbar-horizontal ${this.props.appearance == 'light' ? 'navbar-main navbar-light' : 'navbar navbar-top navbar-dark'}`}
-          expand="md"
+          expand="lg"
         >
           <Container className="px-4">
             <NavbarBrand to="/main/home" tag={Link}>
@@ -51,17 +79,34 @@ class MainNavbar extends React.Component {
                   </Col>
                 </Row>
               </div>
-              <Nav className="ml-auto" navbar>
+              <Nav className="ml-3" navbar>
+                <NavDrop data={menuItem_Procedures} />
+                <NavDrop data={menuItem_Packages} />
                 <NavItem>
-                  <NavLink className="nav-link-icon" to="/" tag={Link}>
-                    <span className="nav-link-inner--text">Procedures</span>
-                    &nbsp;<i className="fa fa-chevron-down" />
+                  <NavLink
+                    className="nav-link-icon"
+                    to="/"
+                    tag={Link}
+                  >
+                    <span className="nav-link-inner--text">Blog</span>
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink className="nav-link-icon" to="/" tag={Link}>
-                    <span className="nav-link-inner--text">Packages</span>
-                    &nbsp;<i className="fa fa-chevron-down" />
+                  <NavLink
+                    className="nav-link-icon"
+                    to="/auth/register"
+                    tag={Link}
+                  >
+                    <span className="nav-link-inner--text">Business Customers</span>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    className="nav-link-icon"
+                    to="/auth/register"
+                    tag={Link}
+                  >
+                    <span className="nav-link-inner--text">Consultation</span>
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -73,13 +118,15 @@ class MainNavbar extends React.Component {
                     <span className="nav-link-inner--text">Partner with us</span>
                   </NavLink>
                 </NavItem>
-                <NavItem>
+              </Nav>
+
+              <Nav className="ml-lg-auto navbar-nav">
+              <NavItem>
                   <button type="button" className="btn btn-sm btn-secondary p-2 mt-2">
-                    Counsulation
+                    Sign up
                   </button>
-                  <button type="button" className="btn btn-sm btn-success p-2 mt-2">
-                    <i className="fa fa-phone"></i>&nbsp;
-                    Call Now
+                  <button type="button" className="btn btn-sm btn-t-default p-2 mt-2">
+                    Sign in
                   </button>
                 </NavItem>
               </Nav>

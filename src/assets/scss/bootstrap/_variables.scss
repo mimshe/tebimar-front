@@ -48,6 +48,15 @@ $yellow:  #ffc107 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
+// Tebimar Colors
+$t-green:   #00b400 !default;
+$t-yellow:   #f8ca00 !default;
+$t-orange:   #e97f02 !default;
+$t-red:   #bd1550 !default;
+$t-purple:   #490a3d !default;
+$t-gray:   #707070 !default;
+$t-black:   #101010 !default;
+
 
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -65,7 +74,14 @@ $colors: map-merge(
     "cyan":       $cyan,
     "white":      $white,
     "gray":       $gray-600,
-    "gray-dark":  $gray-800
+    "gray-dark":  $gray-800,
+    "t-green":    $t-green,
+    "t-yellow":   $t-yellow,
+    "t-orange":   $t-orange,
+    "t-red":      $t-red,
+    "t-purple":   $t-purple,
+    "t-gray":     $t-gray,
+    "t-black":    $t-black
   ),
   $colors
 );
@@ -78,6 +94,7 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
+$t-default:          $t-green !default;
 
 $theme-colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -90,7 +107,8 @@ $theme-colors: map-merge(
     "warning":    $warning,
     "danger":     $danger,
     "light":      $light,
-    "dark":       $dark
+    "dark":       $dark,
+    "t-default":    $t-default
   ),
   $theme-colors
 );

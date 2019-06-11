@@ -33,10 +33,11 @@ class Main extends React.Component {
   };
   navbar(){
     if(window.location.hash == '#/main/home'){
+      var bg = require('../assets/img/bg.jpg');
       return (
         <>
         <MainNavbar appearance="dark" />
-        <div className="header bg-gradient-primary py-7 py-lg-8">
+        <div className="header py-7 py-lg-8 header-bg" style ={ { background: "url("+bg+")" } }>
             <Container>
               <div className="header-body text-center mb-4">
                 <Row className="justify-content-center">
@@ -66,9 +67,7 @@ class Main extends React.Component {
           {/* Page content */}
           
           <Container className="pb-5">
-            <Row className="d-flex flex-row">
-              <Switch>{this.getRoutes(routes)}</Switch>
-            </Row>
+            <Switch>{this.getRoutes(routes)}</Switch>
           </Container>
         </div>
         <MainFooter />
