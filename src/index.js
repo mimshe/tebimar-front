@@ -11,6 +11,7 @@ import "assets/scss/argon-dashboard-react.scss";
 import AdminLayout from "layouts/Admin.jsx";
 import AuthLayout from "layouts/Auth.jsx";
 import MainLayout from "layouts/Main.jsx";
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
     <Provider store={store.store}>

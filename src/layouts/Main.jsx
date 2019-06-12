@@ -8,6 +8,7 @@ import MainNavbar from "components/Navbars/MainNavbar.jsx";
 import MainFooter from "components/Footers/MainFooter.jsx";
 
 import routes from "routes.js";
+import HomeSelectService from "../views/main/Home/Home-Select-Service";
 
 class Main extends React.Component {
   componentDidMount() {
@@ -46,6 +47,7 @@ class Main extends React.Component {
                     <p className="text-lead text-white">Lorem ipsum dolor sit amet consectetuer adipiscing elit</p>
                   </Col>
                 </Row>
+                <HomeSelectService />
               </div>
             </Container>
           </div>
@@ -66,9 +68,8 @@ class Main extends React.Component {
           {this.navbar()}
           {/* Page content */}
           
-          <Container className="pb-5">
-            <Switch>{this.getRoutes(routes)}</Switch>
-          </Container>
+          <Switch>{this.getRoutes(routes)}</Switch>
+
         </div>
         <MainFooter />
       </>

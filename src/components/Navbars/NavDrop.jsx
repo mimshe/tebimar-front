@@ -60,7 +60,10 @@ class NavDrop extends React.Component {
             onMouseLeave={this.onMouseLeave}
             isOpen={this.state.dropdownOpen}
             toggle={this.toggle}>
-        <DropdownToggle nav caret>{data.title}</DropdownToggle>
+        <DropdownToggle nav>
+        {data.title}
+        <i className="fa fa-chevron-down ml-2"></i>
+        </DropdownToggle>
         <DropdownMenu left>
             {options}
         </DropdownMenu>

@@ -79,6 +79,15 @@ $green:   #2dce89 !default;
 $teal:    #11cdef !default;
 $cyan:    #2bffc6 !default;
 
+// Tebimar Colors
+$t-green:   #00b400 !default;
+$t-yellow:   #f8ca00 !default;
+$t-orange:   #e97f02 !default;
+$t-red:   #bd1550 !default;
+$t-purple:   #490a3d !default;
+$t-gray:   #707070 !default;
+$t-black:   #101010 !default;
+
 $colors: () !default;
 $colors: map-merge((
   "blue":       $blue,
@@ -95,7 +104,14 @@ $colors: map-merge((
   "gray":       $gray-600,
   "light":      $gray-400,
   "lighter":    $gray-200,
-  "gray-dark":  $gray-800
+  "gray-dark":  $gray-800,
+  "t-green":    $t-green,
+  "t-yellow":   $t-yellow,
+  "t-orange":   $t-orange,
+  "t-red":      $t-red,
+  "t-purple":   $t-purple,
+  "t-gray":     $t-gray,
+  "t-black":    $t-black
 ), $colors);
 
 $default:       #172b4d !default;
@@ -725,7 +741,7 @@ $navbar-padding-x:                  1rem !default;
 $navbar-nav-link-padding-x:         1rem !default;
 $navbar-nav-link-padding-y:         1rem !default;
 
-$navbar-nav-link-font-size:         .8rem !default;
+$navbar-nav-link-font-size:         .7rem !default;
 $navbar-nav-link-font-weight:       400 !default;
 $navbar-nav-link-text-transform:    normal !default;
 $navbar-nav-link-letter-spacing:    0 !default;
@@ -741,7 +757,7 @@ $navbar-dark-bg:                    transparent !default;
 $navbar-dark-hover-bg:              rgba(255, 255, 255, .1) !default;
 $navbar-dark-active-bg:             rgba(255, 255, 255, .1) !default;
 $navbar-dark-color:                 rgba($white, .95) !default;
-$navbar-dark-hover-color:           rgba($white, .65) !default;
+$navbar-dark-hover-color:           rgba($t-yellow, .65) !default;
 $navbar-dark-active-color:          rgba($white, .65) !default;
 $navbar-dark-disabled-color:        rgba($white, .25) !default;
 $navbar-dark-toggler-border-color:  transparent !default;

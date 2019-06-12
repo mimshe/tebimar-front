@@ -23,7 +23,7 @@ class Footer extends React.Component {
         <footer className="footer-main mt-5 pt-5 pb-2">
           <Container>
             <Row className="align-items-center justify-content-xl-between">
-              <Col xl="3">
+              <Col xl="3" sm="6" md="3">
                 <div className="nav-footer-main justify-content-center justify-content-xl-end">
                     <h4 className="title">IN THE MAIN</h4>
                     <ul>
@@ -35,7 +35,7 @@ class Footer extends React.Component {
                     </ul>
                 </div>
               </Col>
-              <Col xl="3">
+              <Col xl="3" sm="6" md="3">
                 <div className="nav-footer-main justify-content-center justify-content-xl-end">
                     <h4 className="title">IN THE MAIN</h4>
                     <ul>
@@ -47,7 +47,7 @@ class Footer extends React.Component {
                     </ul>
                 </div>
               </Col>
-              <Col xl="6">
+              <Col xl="6" sm="12" md="6">
                 <div className="contact-footer-main justify-content-center justify-content-xl-end">
                     <h4 className="title">SUBSCRIBE</h4>
                     <div className="subscribe mb-3 mt-4">
