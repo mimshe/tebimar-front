@@ -48,7 +48,7 @@ class NavDrop extends React.Component {
 
     const options = [];
     data.options.map(item =>
-        options.push(<DropdownItem><Link className="nav-link-icon" to={item.link}>{item.title}</Link></DropdownItem>)
+        options.push(<DropdownItem><Link className="nav-link-icon  nav-child-link" to={item.link}>{item.title}</Link></DropdownItem>)
     );
 
     return (

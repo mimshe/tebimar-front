@@ -43,7 +43,6 @@
   display: inline-block;
   padding-top: $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
-  margin-right: $navbar-padding-x;
   font-size: $navbar-brand-font-size;
   line-height: inherit;
   white-space: nowrap;
@@ -74,8 +73,13 @@
     position: static;
     float: none;
   }
+  .nav-child-link{
+    color:$t-black!important; 
+    @include hover-focus {
+      color: $t-green!important;
+    }   
+  }
 }
-
 
 // Navbar text
 //
@@ -230,10 +234,10 @@
   .navbar-text {
     color: $navbar-light-color;
     a {
-      color: $navbar-light-active-color;
+      color: $navbar-light-active-color!important;
 
       @include hover-focus {
-        color: $navbar-light-active-color;
+        color: $navbar-light-active-color!important;
       }
     }
   }
@@ -275,10 +279,10 @@
   .navbar-text {
     color: $navbar-dark-color;
     a {
-      color: $navbar-dark-active-color;
+      color: $navbar-dark-active-color!important;
 
       @include hover-focus {
-        color: $navbar-dark-active-color;
+        color: $navbar-dark-active-color!important;
       }
     }
   }

@@ -43,7 +43,8 @@ class HomeSelectService extends React.Component {
             <div className="d-flex justify-content-center mt-4">
                 <Select
                     showSearch
-                    style={{ width: 300 }}
+                    size="large"
+                    className="main-cure-drop"
                     placeholder="Step 1 Search a cure"
                     optionFilterProp="children"
                     onChange={onChange}
@@ -61,7 +62,7 @@ class HomeSelectService extends React.Component {
             </div>
 
             <div className="d-flex justify-content-center">
-                <div className="main-service-navigation mt-4">
+                <div className="main-service-navigation mt-2">
                     <div className="content">
                         <ul>
                             <li className="active">

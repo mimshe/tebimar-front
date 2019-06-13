@@ -65,9 +65,10 @@ class MainNavbar extends React.Component {
           className={`navbar-horizontal ${this.props.appearance == 'light' ? 'navbar-main navbar-light' : 'navbar navbar-top navbar-dark'}`}
           expand="lg"
         >
-          <Container className="px-4">
+          <Container className="px-1">
             <NavbarBrand to="/main/home" tag={Link}>
-              <img alt="..." src={require(`assets/img/brand/tebimar-logo-${this.props.appearance == 'light' ? 'green' : 'white'}.png`)} />
+              <img alt="..." className="d-lg-none d-xs-block d-sm-block d-md-block d-xl-block" src={require(`assets/img/brand/tebimar-logo-${this.props.appearance == 'light' ? 'green' : 'white'}.png`)} />
+              <img alt="..." className="d-none d-lg-block d-xl-none d-md-none d-sm-none d-xs-none" src={require('assets/img/brand/tebimar-mini-logo.png')} />
             </NavbarBrand>
             <button className="navbar-toggler" id="navbar-collapse-main">
               <span className="navbar-toggler-icon" />
@@ -131,14 +132,16 @@ class MainNavbar extends React.Component {
                   <button
                     onClick={() => this.toggleModal("signupModal")}
                     type="button"
-                    className="btn btn-sm btn-secondary p-2 mt-2">
-                    Sign up
+                    className="btn btn-sm btn-secondary p-2 mt-2 mr-1">
+                    <span className="d-lg-none d-xs-block d-sm-block d-md-block d-xl-block">Sign up</span>
+                    <i className="fa fa-user-plus d-none d-lg-block d-xl-none d-md-none d-sm-none d-xs-none m-0" />
                   </button>
                   <button
                    onClick={() => this.toggleModal("signinModal")}
                    type="button"
-                   className="btn btn-sm btn-t-default p-2 mt-2">
-                    Sign in
+                   className="btn btn-sm btn-t-default p-2 mt-2 mr-0">
+                    <span className="d-lg-none d-xs-block d-sm-block d-md-block d-xl-block">Sign in</span>
+                    <i className="fa fa-sign-in-alt d-none d-lg-block d-xl-none d-md-none d-sm-none d-xs-none m-0" />
                   </button>
                 </NavItem>
               </Nav>

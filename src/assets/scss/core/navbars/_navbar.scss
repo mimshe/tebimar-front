@@ -58,8 +58,6 @@
     @include media-breakpoint-up(lg) {
         .navbar-nav {
             .nav-item {
-                margin-right: .5rem;
-
                 [data-toggle="dropdown"]::after {
                     transition: $transition-base;
                 }

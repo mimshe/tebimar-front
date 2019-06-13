@@ -51,36 +51,38 @@ class ChooseCity extends React.Component {
                     </div>
                     </Col>
                     <Col className="mt-4" lg="8" md="8">
-                        <div className="service-items d-flex flex-row p-3 mb-3">
-                            <Col lg="4" md="4">
-                                <img src={require("assets/img/theme/react.jpg")} alt=""/>
-                            </Col>
-                            <Col lg="8" md="8">
-                                <h4>Tehran</h4>
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat
-                                </p>
-                                <div className="d-flex justify-content-end">
-                                <Button color="secondary" type="button">More</Button>
-                                <Button color="t-default" type="button">Select</Button>
-                                </div>
-                            </Col>
-                        </div>
-                        <div className="service-items d-flex flex-row p-3 mb-3">
-                            <Col lg="4" md="4">
-                                <img src={require("assets/img/theme/react.jpg")} alt=""/>
-                            </Col>
-                            <Col lg="8" md="8">
-                                <h4>Tehran</h4>
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat
-                                </p>
-                                <div className="d-flex justify-content-end">
-                                <Button color="secondary" type="button">More</Button>
-                                <Button color="t-default" type="button">Select</Button>
-                                </div>
-                            </Col>
-                        </div>
+                        <Col lg="12" md="12">
+                            <div className="service-items row p-3 mb-3">
+                                <Col lg="4" md="12" sm="12" className="text-center">
+                                    <img src={require("assets/img/theme/react.jpg")} alt=""/>
+                                </Col>
+                                <Col lg="8" md="12" sm="12">
+                                    <h4>Tehran</h4>
+                                    <p>
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat
+                                    </p>
+                                    <div className="d-flex justify-content-end">
+                                    <Button color="secondary" type="button">More</Button>
+                                    <Button color="t-default" type="button">Select</Button>
+                                    </div>
+                                </Col>
+                            </div>
+                            <div className="service-items row p-3 mb-3">
+                                <Col lg="4" md="12" sm="12" className="text-center">
+                                    <img src={require("assets/img/theme/react.jpg")} alt=""/>
+                                </Col>
+                                <Col lg="8" md="12" sm="12">
+                                    <h4>Tehran</h4>
+                                    <p>
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat
+                                    </p>
+                                    <div className="d-flex justify-content-end">
+                                    <Button color="secondary" type="button">More</Button>
+                                    <Button color="t-default" type="button">Select</Button>
+                                    </div>
+                                </Col>
+                            </div>
+                        </Col>
                         <div className="d-flex justify-content-center pt-4">
                         <nav aria-label="...">
                             <Pagination>
