@@ -28,12 +28,51 @@ class Navigation extends React.Component {
         this.setState({phone: value})
     }
 
+    // componentDidMount(){
+    //     window.addEventListener('scroll', (event) => {
+    //         console.log(event)
+    //     //    if(scroll position is top){
+    //     //        class = 'top';
+    //     //    }else{
+    //     //        class = 'normal';
+    //     //    }
+    //     //    this.setState({
+    //     //       activeClass: class
+    //     //    })
+    //     });
+    // }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.listenToScroll)
+      }
+      
+      componentWillUnmount() {
+        window.removeEventListener('scroll', this.listenToScroll)
+      }
+      
+      listenToScroll = () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const clientWidth = document.documentElement.clientWidth;
+        if(winScroll > 130 && this.state.fix != true && clientWidth > 425){
+            this.setState({
+                fix: true,
+              })
+        }
+        else if (winScroll < 130 && this.state.fix != false){
+            this.setState({
+                fix: false,
+            })
+        }
+      }
+
     render() {
         return (
             <>
             <Col lg="12" md="12">
-                <div className="service-navigation mt-5 w-100">
-                    <div className="content">
+                <div 
+                    className={`service-navigation mt-5 w-100 ${this.state.fix ? 'fix' : ''}`}>
+                    <div
+                    className={`content ${this.state.fix ? 'container' : ''}`}>
                     <ul>
                         <li className="done">
                             {/* <i className="fa fa-file-medical pr-1"></i> */}
