@@ -17,17 +17,30 @@ import {
   DropdownItem 
 } from "reactstrap";
 
-class NavDrop extends React.Component {
-  constructor(props) {
-    super(props);
+import fa from '../../assets/img/language/iran.png';
+import en from '../../assets/img/language/united-kingdom.png';
 
+class Language extends React.Component {
+   constructor(props) {
+    super(props);
     this.toggle = this.toggle.bind(this);
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
-    this.state = {
-      dropdownOpen: false
-    };
   }
+  state = {
+    dropdownOpen: false,
+    selectedOption:'en',
+    options:[
+        {
+            key:'en',
+            title: <img src={en} />
+        },
+        {
+            key:'fa',
+            title:<img src={fa} />
+        },
+    ]
+  };
 
   toggle() {
     this.setState(prevState => ({
@@ -43,13 +56,21 @@ class NavDrop extends React.Component {
     this.setState({dropdownOpen: false});
   }
 
+  setLanguage(item){
+    this.setState(prevState => ({
+        selectedOption: item
+    }));
+  }
+
   render() {
     const data = this.props.data;
 
     const options = [];
-    data.options.map((item, index) =>
-        options.push(<DropdownItem key={index}><Link className="nav-link-icon  nav-child-link" to={item.link}>{item.title}</Link></DropdownItem>)
+    this.state.options.map(item =>
+        options.push(<DropdownItem key={item.key}><a onClick={() => this.setLanguage(item.key)} className="nav-link-icon nav-child-link">{item.title}</a></DropdownItem>)
     );
+
+    const selectedItem = this.state.options.find(x=> x.key == this.state.selectedOption);
 
     return (
       <>
@@ -61,10 +82,10 @@ class NavDrop extends React.Component {
             isOpen={this.state.dropdownOpen}
             toggle={this.toggle}>
         <DropdownToggle nav>
-        {data.title}
+        {selectedItem.title}
         <i className="fa fa-chevron-down ml-2"></i>
         </DropdownToggle>
-        <DropdownMenu>
+        <DropdownMenu className="dropdown-menu-mini">
             {options}
         </DropdownMenu>
         </UncontrolledDropdown>
@@ -73,4 +94,4 @@ class NavDrop extends React.Component {
   }
 }
 
-export default NavDrop;
+export default Language;

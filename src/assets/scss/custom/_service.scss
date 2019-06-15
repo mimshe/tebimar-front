@@ -79,6 +79,15 @@
         top: -48px;
         left: 0px;
         z-index: 1005;
+        .content{
+            ul{
+                li{
+                    &.submit{
+                        border-radius: 0px!important;
+                    }
+                }
+            }
+        }
     }
 }
 

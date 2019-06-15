@@ -24,6 +24,8 @@ import {
 } from "reactstrap";
 import NavDrop from "./NavDrop";
 import Signin from "../../views/main/Home/Signin";
+import Language from "./Language";
+import Currency from "./Currency";
 
 class MainNavbar extends React.Component {
 
@@ -59,6 +61,7 @@ class MainNavbar extends React.Component {
       }
     ]
   };
+
     return (
       <>
         <Navbar
@@ -126,8 +129,27 @@ class MainNavbar extends React.Component {
                   </NavLink>
                 </NavItem>
               </Nav>
+              <Nav className=" mr-2 ml-lg-auto navbar-nav">
+              <NavItem>
+                  <NavLink
+                    className="nav-link-icon"
+                    to="/auth/register"
+                    tag={Link}
+                  >
+                    <span className="nav-link-inner--text">
+                      <i className="fa fa-phone"></i>
+                    </span>
+                  </NavLink>
+                </NavItem>
+              </Nav>
+              <Nav className="navbar-nav">
+                <Language />
+              </Nav>
+              <Nav className="navbar-nav mr-3">
+                <Currency />
+              </Nav>
 
-              <Nav className="ml-lg-auto navbar-nav">
+              <Nav className="navbar-nav">
               <NavItem>
                   <button
                     onClick={() => this.toggleModal("signupModal")}
