@@ -23,9 +23,13 @@ import {
   Modal
 } from "reactstrap";
 import NavDrop from "./NavDrop";
-import Signin from "../../views/main/Home/Signin";
 import Language from "./Language";
 import Currency from "./Currency";
+import store from "../../redux/store";
+import Signin from "../../views/main/Home/Signin";
+import { openModal, closeModal } from "../../redux/actions";
+import { connect } from "react-redux";
+import Signup from "../../views/main/Home/Signup";
 
 class MainNavbar extends React.Component {
 
@@ -61,7 +65,6 @@ class MainNavbar extends React.Component {
       }
     ]
   };
-
     return (
       <>
         <Navbar
@@ -152,14 +155,14 @@ class MainNavbar extends React.Component {
               <Nav className="navbar-nav">
               <NavItem>
                   <button
-                    onClick={() => this.toggleModal("signupModal")}
+                    onClick={() => store.store.getState().modal.name != 'signup' ?  store.store.dispatch(openModal('signup')): store.store.dispatch(closeModal())}
                     type="button"
                     className="btn btn-sm btn-secondary p-2 mt-2 mr-1">
                     <span className="d-lg-none d-xs-block d-sm-block d-md-block d-xl-block">Sign up</span>
                     <i className="fa fa-user-plus d-none d-lg-block d-xl-none d-md-none d-sm-none d-xs-none m-0" />
                   </button>
                   <button
-                   onClick={() => this.toggleModal("signinModal")}
+                   onClick={() => store.store.getState().modal.name != 'signin' ?  store.store.dispatch(openModal('signin')): store.store.dispatch(closeModal())}
                    type="button"
                    className="btn btn-sm btn-t-default p-2 mt-2 mr-0">
                     <span className="d-lg-none d-xs-block d-sm-block d-md-block d-xl-block">Sign in</span>
@@ -170,165 +173,14 @@ class MainNavbar extends React.Component {
             </UncontrolledCollapse>
           </Container>
         </Navbar>
-
-        <Modal
-              className="modal-dialog-centered"
-              size="sm"
-              isOpen={this.state.signinModal}
-              toggle={() => this.toggleModal("signinModal")}
-            >
-              <div className="modal-body p-0">
-                <Card className="bg-secondary shadow border-0">
-                <div className="modal-header">
-                  <h4 className="modal-title" id="modal-title-default">
-                    Sign in to <span className="text-t-green">Tebimar</span>
-                  </h4>
-                  <button
-                  aria-label="Close"
-                  className="close"
-                  data-dismiss="modal"
-                  type="button"
-                  onClick={() => this.toggleModal("signinModal")}
-                >
-                  <span aria-hidden={true}>×</span>
-                </button>
-                </div>
-                  <CardBody className="px-lg-5 py-lg-4">
-                    <Form role="form">
-                      <FormGroup className="mb-3">
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-email-83" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input placeholder="Email" type="email" />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup>
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-lock-circle-open" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input placeholder="Password" type="password" />
-                        </InputGroup>
-                      </FormGroup>
-                      <div className="custom-control custom-control-alternative custom-checkbox">
-                        <input
-                          className="custom-control-input"
-                          id=" customCheckLogin"
-                          type="checkbox"
-                        />
-                        <label
-                          className="custom-control-label"
-                          htmlFor=" customCheckLogin"
-                        >
-                          <span className="text-muted">Remember me</span>
-                        </label>
-                      </div>
-                      <div className="text-center">
-                        <Button
-                          className="my-3 btn-block"
-                          color="primary"
-                          type="button"
-                        >
-                          Sign in
-                        </Button>
-
-                      </div>
-                      <div className="text-left">
-                        <a className="text-t-green d-block">Forgot Password!</a>
-                        <a
-                          onClick={() => this.toggleModal("signinModal")}
-                          className="text-t-green d-block">Sign up</a>
-                      </div>
-                    </Form>
-                  </CardBody>
-                </Card>
-              </div>
-        </Modal>
-
-
-        <Modal
-              className="modal-dialog-centered"
-              size="sm"
-              isOpen={this.state.signupModal}
-              toggle={() => this.toggleModal("signupModal")}
-            >
-              <div className="modal-body p-0">
-                <Card className="bg-secondary shadow border-0">
-                <div className="modal-header">
-                  <h4 className="modal-title" id="modal-title-default">
-                    Sign up to <span className="text-t-green">Tebimar</span>
-                  </h4>
-                  <button
-                  aria-label="Close"
-                  className="close"
-                  data-dismiss="modal"
-                  type="button"
-                  onClick={() => this.toggleModal("signupModal")}
-                >
-                  <span aria-hidden={true}>×</span>
-                </button>
-                </div>
-                  <CardBody className="px-lg-5 py-lg-4">
-                    <Form role="form">
-                    <FormGroup className="mb-3">
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-mobile-button" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input placeholder="phone number" type="number" />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup className="mb-3">
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-email-83" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input placeholder="Email" type="email" />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup>
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-lock-circle-open" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input placeholder="Password" type="password" />
-                        </InputGroup>
-                      </FormGroup>
- 
-                      <div className="text-center">
-                        <Button
-                          className="my-3 btn-block"
-                          color="primary"
-                          type="button"
-                        >
-                          Sign up
-                        </Button>
-
-                      </div>
-                      <div className="text-left">
-                        <a
-                          onClick={() => this.toggleModal("signinModal")}
-                          className="text-t-green d-block">Sign in</a>
-                      </div>
-                    </Form>
-                  </CardBody>
-                </Card>
-              </div>
-        </Modal>
+        <Signin />
+        <Signup />
       </>
     );
   }
 }
-
-export default MainNavbar;
+const mapStateToProps = state => {
+  const name = state.modal.name;
+  return {name}
+}
+export default connect(mapStateToProps)(MainNavbar);

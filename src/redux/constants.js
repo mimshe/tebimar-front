@@ -1,6 +1,8 @@
 import {
     resetUser,
- setUser
+    setUser,
+    openModal,
+    closeModal
 } from "./actions";
 import {setToken} from "./actions/index";
 
@@ -14,6 +16,13 @@ export const mapDispatchToProps = dispatch => {
         resetUser: user => {
             dispatch(resetUser());
         },
+        openModal: modal => {
+            dispatch(openModal(modal));
+        },
+
+        closeModal: user => {
+            dispatch(closeModal());
+        },
     }
 };
 
@@ -21,6 +30,6 @@ export const mapStateToProps = (state) => {
     return {
         basket: state.basket,
         user: state.user,
-
+        modal: state.modal
     }
 };
