@@ -1,16 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // reactstrap components
 import {
-  UncontrolledCollapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Row,
-  Col,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -33,11 +23,11 @@ class Language extends React.Component {
     options:[
         {
             key:'en',
-            title: <img src={en} />
+            title: <img src={en} alt="" />
         },
         {
             key:'fa',
-            title:<img src={fa} />
+            title:<img src={fa} alt="" />
         },
     ]
   };
@@ -63,14 +53,12 @@ class Language extends React.Component {
   }
 
   render() {
-    const data = this.props.data;
-
     const options = [];
     this.state.options.map(item =>
         options.push(<DropdownItem key={item.key}><a onClick={() => this.setLanguage(item.key)} className="nav-link-icon nav-child-link">{item.title}</a></DropdownItem>)
     );
 
-    const selectedItem = this.state.options.find(x=> x.key == this.state.selectedOption);
+    const selectedItem = this.state.options.find(x=> x.key === this.state.selectedOption);
 
     return (
       <>

@@ -2,12 +2,8 @@ import React from "react";
 
 // reactstrap components
 import {
-    Row,
     Col,
-    Container
 } from "reactstrap";
-import { Carousel } from 'antd';
-
 
 class HomeRecommendedPackages extends React.Component {
 

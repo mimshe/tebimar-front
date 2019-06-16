@@ -2,24 +2,12 @@ import React from "react";
 
 // reactstrap components
 import {
-    Card,
-    //CardHeader,
-    CardBody,
-    FormGroup,
-    Form,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
-    Row,
     Col,
     Container
 } from "reactstrap";
 
 
-import ReactPhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/dist/style.css'
-import LoadingButton from "../../../components/Custom/LoadingButton";
 import HomeFeatures from "./Home-Features";
 import HomeRecommendedPackages from "./Home-Recommended-Packages";
 

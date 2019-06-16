@@ -1,22 +1,6 @@
 import React from "react";
 
-// reactstrap components
-import {
-    Card,
-    CardBody,
-    FormGroup,
-    Form,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
-    Row,
-    Col,
-    Container
-} from "reactstrap";
-
 import { Select } from 'antd';
-
 const { Option } = Select;
 
 class HomeSelectService extends React.Component {
@@ -82,10 +66,10 @@ class HomeSelectService extends React.Component {
                                 <h5 className="title">Hotel</h5>
                             </li>
                             <li className="submit">
-                                <a>
+                                <div>
                                     <span className="text-white d-md-none d-lg-none">submit</span>
                                     <i className="fa fa-chevron-right"></i>
-                                </a>
+                                </div>
                             </li>
                         </ul>
                     </div>

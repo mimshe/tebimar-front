@@ -12,19 +12,14 @@ import {
   InputGroup,
   Modal
 } from "reactstrap";
-import store from "../../../redux/store";
-import { closeModal, openModal } from "../../../redux/actions";
 import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "../../../redux/constants";
 
 
 class Signin extends React.Component {
 
-  state = {
-    defaultModal: false
-  };
-
   render() {
-  let isOpen = this.props.name != null && this.props.name == 'signin' ? true : false;
+  const isOpen = this.props.modal.name !== null && this.props.modal.name === 'signin' ? true : false;
     return (
       <>
         <Modal
@@ -43,7 +38,7 @@ class Signin extends React.Component {
                   className="close"
                   data-dismiss="modal"
                   type="button"
-                  onClick={() => store.store.dispatch(closeModal())}
+                  onClick={() => this.props.closeModal()}
                   >
                   <span aria-hidden={true}>×</span>
                 </button>
@@ -96,7 +91,7 @@ class Signin extends React.Component {
                       <div className="text-left">
                         <a className="text-t-green d-block">Forgot Password!</a>
                         <a
-                          onClick={() => store.store.dispatch(openModal('signup'))}
+                          onClick={() => this.props.openModal('signup')}
                           className="text-t-green d-block">Sign up</a>
                       </div>
                     </Form>
@@ -108,10 +103,6 @@ class Signin extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {
-  const name = state.modal.name;
-  return {name}
-}
 
-export default connect(mapStateToProps)(Signin);
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
 

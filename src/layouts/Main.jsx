@@ -33,7 +33,7 @@ class Main extends React.Component {
     });
   };
   navbar(){
-    if(window.location.hash == '#/main/home'){
+    if(window.location.hash === '#/main/home'){
       var bg = require('../assets/img/bg.jpg');
       return (
         <>

@@ -1,16 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // reactstrap components
 import {
-  UncontrolledCollapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Row,
-  Col,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -34,12 +24,12 @@ class Currency extends React.Component {
         {
             key:'en',
             title:'Dollar',
-            img: <img src={dollar} />
+            img: <img src={dollar} alt="" />
         },
         {
             key:'fa',
             title:'Euro',
-            img:<img src={euro} />
+            img:<img src={euro} alt="" />
         },
     ]
   };
@@ -65,14 +55,12 @@ class Currency extends React.Component {
   }
 
   render() {
-    const data = this.props.data;
-
     const options = [];
     this.state.options.map(item =>
         options.push(<DropdownItem key={item.key}><a onClick={() => this.setLanguage(item.key)} className="nav-link-icon nav-child-link">{item.img} {item.title}</a></DropdownItem>)
     );
 
-    const selectedItem = this.state.options.find(x=> x.key == this.state.selectedOption);
+    const selectedItem = this.state.options.find(x=> x.key === this.state.selectedOption);
 
     return (
       <>

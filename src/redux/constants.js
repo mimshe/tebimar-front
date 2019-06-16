@@ -4,7 +4,6 @@ import {
     openModal,
     closeModal
 } from "./actions";
-import {setToken} from "./actions/index";
 
 export const mapDispatchToProps = dispatch => {
     return {

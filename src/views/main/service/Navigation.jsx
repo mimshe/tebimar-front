@@ -2,23 +2,10 @@ import React from "react";
 
 // reactstrap components
 import {
-    Card,
-    //CardHeader,
-    CardBody,
-    FormGroup,
-    Form,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
-    Row,
     Col
 } from "reactstrap";
 
-
-import ReactPhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/dist/style.css'
-import LoadingButton from "../../../components/Custom/LoadingButton";
 
 class Navigation extends React.Component {
     state = {
@@ -53,12 +40,12 @@ class Navigation extends React.Component {
       listenToScroll = () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const clientWidth = document.documentElement.clientWidth;
-        if(winScroll > 130 && this.state.fix != true && clientWidth > 425){
+        if(winScroll > 130 && this.state.fix !== true && clientWidth > 425){
             this.setState({
                 fix: true,
               })
         }
-        else if (winScroll < 130 && this.state.fix != false){
+        else if (winScroll < 130 && this.state.fix !== false){
             this.setState({
                 fix: false,
             })

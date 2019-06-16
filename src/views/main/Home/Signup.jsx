@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // reactstrap components
 import {
   Button,
@@ -13,18 +12,13 @@ import {
   InputGroup,
   Modal
 } from "reactstrap";
-import store from "../../../redux/store";
-import { closeModal, openModal } from "../../../redux/actions";
 import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "../../../redux/constants";
 
 class Signup extends React.Component {
 
-  state = {
-    defaultModal: false
-  };
-
   render() {
-  let isOpen = this.props.name != null && this.props.name == 'signup' ? true : false;
+  const isOpen = this.props.modal.name !== null && this.props.modal.name === 'signup' ? true : false;
     return (
       <>
         <Modal
@@ -43,7 +37,7 @@ class Signup extends React.Component {
                   className="close"
                   data-dismiss="modal"
                   type="button"
-                  onClick={() => store.store.dispatch(closeModal())}
+                  onClick={() => this.props.closeModal()}
                 >
                   <span aria-hidden={true}>×</span>
                 </button>
@@ -93,7 +87,7 @@ class Signup extends React.Component {
                       </div>
                       <div className="text-left">
                         <a
-                          onClick={() => store.store.dispatch(openModal('signup'))}
+                          onClick={() => this.props.openModal('signin')}
                           className="text-t-green d-block">Sign in</a>
                       </div>
                     </Form>
@@ -105,10 +99,6 @@ class Signup extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {
-  const name = state.modal.name;
-  return {name}
-}
 
-export default connect(mapStateToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
 
