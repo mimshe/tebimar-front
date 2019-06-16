@@ -9,6 +9,8 @@ import {
 
 import dollar from '../../assets/img/currency/dollar.png';
 import euro from '../../assets/img/currency/euro.png';
+import { mapDispatchToProps, mapStateToProps } from "../../redux/constants";
+import { connect } from "react-redux";
 
 class Currency extends React.Component {
    constructor(props) {
@@ -19,15 +21,14 @@ class Currency extends React.Component {
   }
   state = {
     dropdownOpen: false,
-    selectedOption:'en',
     options:[
         {
-            key:'en',
+            key:'dollar',
             title:'Dollar',
             img: <img src={dollar} alt="" />
         },
         {
-            key:'fa',
+            key:'euro',
             title:'Euro',
             img:<img src={euro} alt="" />
         },
@@ -48,19 +49,12 @@ class Currency extends React.Component {
     this.setState({dropdownOpen: false});
   }
 
-  setLanguage(item){
-    this.setState(prevState => ({
-        selectedOption: item
-    }));
-  }
-
   render() {
     const options = [];
     this.state.options.map(item =>
-        options.push(<DropdownItem key={item.key}><a onClick={() => this.setLanguage(item.key)} className="nav-link-icon nav-child-link">{item.img} {item.title}</a></DropdownItem>)
+        options.push(<DropdownItem key={item.key}><a onClick={() =>  this.props.setGeneral({currencyUnit:item.key})} className="nav-link-icon nav-child-link">{item.img} {item.title}</a></DropdownItem>)
     );
-
-    const selectedItem = this.state.options.find(x=> x.key === this.state.selectedOption);
+    const selectedItem = this.state.options.find(x=> x.key == (this.props.general.currencyUnit != null ? this.props.general.currencyUnit : 'dollar'));
 
     return (
       <>
@@ -84,4 +78,4 @@ class Currency extends React.Component {
   }
 }
 
-export default Currency;
+export default connect(mapStateToProps,mapDispatchToProps)(Currency);

@@ -2,7 +2,9 @@ import {
     RESET_USER,
     SET_USER,
     OPEN_MODAL,
-    CLOSE_MODAL
+    CLOSE_MODAL,
+    SET_GENERAL,
+    RESET_GENERAL
 } from './type';
 
 
@@ -21,6 +23,14 @@ export const closeModal = () => ({
 export const openModal = (modal) => ({
     type: OPEN_MODAL,
     payload: modal,
+});
+
+export const resetGeneral = () => ({
+    type: RESET_GENERAL,
+});
+export const setGeneral = (general) => ({
+    type: SET_GENERAL,
+    payload: general,
 });
 
 export const setProgressBar = (isOpen) => (

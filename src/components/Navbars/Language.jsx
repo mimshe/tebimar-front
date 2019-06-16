@@ -9,6 +9,8 @@ import {
 
 import fa from '../../assets/img/language/iran.png';
 import en from '../../assets/img/language/united-kingdom.png';
+import { mapStateToProps, mapDispatchToProps } from "../../redux/constants";
+import { connect } from "react-redux";
 
 class Language extends React.Component {
    constructor(props) {
@@ -19,7 +21,6 @@ class Language extends React.Component {
   }
   state = {
     dropdownOpen: false,
-    selectedOption:'en',
     options:[
         {
             key:'en',
@@ -46,19 +47,13 @@ class Language extends React.Component {
     this.setState({dropdownOpen: false});
   }
 
-  setLanguage(item){
-    this.setState(prevState => ({
-        selectedOption: item
-    }));
-  }
-
   render() {
     const options = [];
     this.state.options.map(item =>
-        options.push(<DropdownItem key={item.key}><a onClick={() => this.setLanguage(item.key)} className="nav-link-icon nav-child-link">{item.title}</a></DropdownItem>)
+        options.push(<DropdownItem key={item.key}><a onClick={() => this.props.setGeneral({localLang:item.key})} className="nav-link-icon nav-child-link">{item.title}</a></DropdownItem>)
     );
 
-    const selectedItem = this.state.options.find(x=> x.key === this.state.selectedOption);
+    const selectedItem = this.state.options.find(x=> x.key == (this.props.general.localLang != null ? this.props.general.localLang : 'en'));
 
     return (
       <>
@@ -82,4 +77,4 @@ class Language extends React.Component {
   }
 }
 
-export default Language;
+export default connect(mapStateToProps,mapDispatchToProps)(Language);

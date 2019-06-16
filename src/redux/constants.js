@@ -2,33 +2,38 @@ import {
     resetUser,
     setUser,
     openModal,
-    closeModal
+    closeModal,
+    setGeneral,
+    resetGeneral
 } from "./actions";
 
 export const mapDispatchToProps = dispatch => {
     return {
-
         setUser: user => {
             dispatch(setUser(user));
         },
-
         resetUser: user => {
             dispatch(resetUser());
         },
         openModal: modal => {
             dispatch(openModal(modal));
         },
-
         closeModal: user => {
             dispatch(closeModal());
+        },
+        setGeneral: general => {
+            dispatch(setGeneral(general));
+        },
+        resetGeneral: general => {
+            dispatch(resetGeneral());
         },
     }
 };
 
 export const mapStateToProps = (state) => {
     return {
-        basket: state.basket,
         user: state.user,
-        modal: state.modal
+        modal: state.modal,
+        general: state.general
     }
 };
