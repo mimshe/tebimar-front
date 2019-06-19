@@ -7,6 +7,7 @@ import Tables from "views/examples/Tables.jsx";
 import Icons from "views/examples/Icons.jsx";
 import Home from "views/main/Home/Home.jsx";
 import ChooseCity from "views/main/service/ChooseCity.jsx";
+import HospitalDetail from "./views/main/service/HospitalDetail";
 
 var routes = [
   {
@@ -70,6 +71,13 @@ var routes = [
     name: " ChooseCity",
     icon: "ni ni-circle-08 text-pink",
     component:  ChooseCity,
+    layout: "/main"
+  },
+  {
+    path: "/service/hospital-detail",
+    name: " ChooseCity",
+    icon: "ni ni-circle-08 text-pink",
+    component:  HospitalDetail,
     layout: "/main"
   }
 ];
