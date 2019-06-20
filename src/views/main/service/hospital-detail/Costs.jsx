@@ -21,7 +21,7 @@ class Costs extends React.Component {
                                 <Col lg="4" md="3">
                                     <Select
                                         size="large"
-                                        className="p-2"
+                                        className="mt-2 mb-2"
                                         style={{ width: '100%' }}
                                         placeholder="Section 1"
                                         optionFilterProp="children"
@@ -34,7 +34,7 @@ class Costs extends React.Component {
                                 <Col lg="4" md="3">
                                     <Select
                                         size="large"
-                                        className="p-2"
+                                        className="mt-2 mb-2"
                                         style={{ width: '100%' }}
                                         placeholder="Cure"
                                         optionFilterProp="children"
@@ -47,7 +47,7 @@ class Costs extends React.Component {
                                 <Col lg="4" md="3">
                                     <Select
                                         size="large"
-                                        className="p-2"
+                                        className="mt-2 mb-2"
                                         style={{ width: '100%' }}
                                         placeholder="Head"
                                         optionFilterProp="children"
