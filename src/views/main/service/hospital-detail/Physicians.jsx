@@ -26,7 +26,7 @@ class Physicians extends React.Component {
                         </div>
                     </div>
                     <div className="content">
-                        <Row>
+                        <div className="d-flex flex-row row">
                             <Col lg="2" md="3" sm="6" className="p-2">
                                 <div className="physician-card text-center p-2">
                                     <img src={user} alt="" />
@@ -117,9 +117,7 @@ class Physicians extends React.Component {
                                     <Button className="mt-2" color="t-default" block type="button">Profile</Button>
                                 </div>
                             </Col>
-                            
-
-                        </Row>
+                        </div>
                     </div>
                 </div>
         </Col>

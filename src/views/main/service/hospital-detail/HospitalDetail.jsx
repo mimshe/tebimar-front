@@ -150,7 +150,7 @@ class HospitalDetail extends React.Component {
                         </div>
                     </Col>
                     <Col className="mt-4" lg="8" md="12">
-                        <div className="hospital-detail-box d-flex flex-row row">
+                        <div className="hospital-detail-box d-flex flex-row">
                             <Col className="border-right" lg="7">
                                 <div className="header d-flex justify-content-between mt-3 mb-3">
                                     <h4 className="title">About Hospital</h4>
