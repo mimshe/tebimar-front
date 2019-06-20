@@ -374,3 +374,70 @@
         }
     }
   }
+
+  .comment-box {
+    .box-title {  
+        color: $t-green;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center; 
+        &:after {  
+            content: '';
+            border-top:$gray-300 2px solid;
+            margin: 0 0px 0px 15px;
+            flex: 1 0 20px;
+        }
+    }  
+    
+ 
+
+    .item{
+        img{
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+        }
+        .content{
+            .title{
+              small{
+                  color: $t-gray;
+              }
+            }
+            .desc{
+              text-align: justify;
+            }
+        }
+    } 
+  }
+
+  .cost-box{
+    .header{
+        .title{
+            
+        }
+    }
+    table{
+        border-collapse:separate; 
+        border-spacing:0 15px;
+        tbody{
+            tr{
+                flex-direction: column;
+                word-wrap: break-word;
+                border-radius: 0.375rem;
+                box-shadow: 0 1px 6px 0px #00000040;
+                td{
+
+                    &.submit{
+                        background-color: $t-green;
+                        color: $white;
+                        text-align: center;
+                        border-top-right-radius: 0.375rem;
+                        border-bottom-right-radius: 0.375rem;
+                    }
+                }
+            }
+        }
+    }
+  }

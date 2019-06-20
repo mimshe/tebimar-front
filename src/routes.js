@@ -7,7 +7,7 @@ import Tables from "views/examples/Tables.jsx";
 import Icons from "views/examples/Icons.jsx";
 import Home from "views/main/Home/Home.jsx";
 import ChooseCity from "views/main/service/ChooseCity.jsx";
-import HospitalDetail from "./views/main/service/HospitalDetail";
+import HospitalDetail from "./views/main/service/hospital-detail/HospitalDetail";
 
 var routes = [
   {
