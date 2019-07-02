@@ -8,6 +8,7 @@ import Icons from "views/examples/Icons.jsx";
 import Home from "views/main/Home/Home.jsx";
 import ChooseCity from "views/main/service/ChooseCity.jsx";
 import HospitalDetail from "./views/main/service/hospital-detail/HospitalDetail";
+import Visa from "./views/main/service/visa/Visa";
 
 var routes = [
   {
@@ -71,6 +72,13 @@ var routes = [
     name: " ChooseCity",
     icon: "ni ni-circle-08 text-pink",
     component:  ChooseCity,
+    layout: "/main"
+  },
+  {
+    path: "/service/visa",
+    name: " Visa",
+    icon: "ni ni-circle-08 text-pink",
+    component:  Visa,
     layout: "/main"
   },
   {

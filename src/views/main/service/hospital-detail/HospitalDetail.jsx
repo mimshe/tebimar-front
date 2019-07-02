@@ -20,6 +20,7 @@ import Comments from "./Comments.jsx";
 import RecommendedPackages from "./RecommendedPackages.jsx";
 import Physicians from "./Physicians.jsx";
 import Costs from "./Costs.jsx";
+import PlaceInMap from "./PlaceInMap.jsx";
 
 class HospitalDetail extends React.Component {
 
@@ -58,6 +59,8 @@ class HospitalDetail extends React.Component {
                                     deselect
                                 </Button>                            
                             </div>
+
+                            <PlaceInMap />
                         </div>
                     </div>
                     </Col>
@@ -66,7 +69,7 @@ class HospitalDetail extends React.Component {
                             <div>
                                 <div
                                     style={{
-                                        minHeight: "246px",
+                                        minHeight: "341px",
                                         backgroundImage:
                                         "url(" + require("assets/img/1.jpg") + ")",
                                         backgroundSize: "cover",
@@ -77,7 +80,7 @@ class HospitalDetail extends React.Component {
                             <div>
                                 <div
                                     style={{
-                                        minHeight: "262px",
+                                        minHeight: "341px",
                                         backgroundImage:
                                         "url(" + require("assets/img/1.jpg") + ")",
                                         backgroundSize: "cover",
@@ -88,7 +91,7 @@ class HospitalDetail extends React.Component {
                             <div>
                                 <div
                                     style={{
-                                        minHeight: "262px",
+                                        minHeight: "341px",
                                         backgroundImage:
                                         "url(" + require("assets/img/1.jpg") + ")",
                                         backgroundSize: "cover",
@@ -98,7 +101,7 @@ class HospitalDetail extends React.Component {
                             </div>
                         </Carousel>
                     </Col>
-                    <Col className="mt-4" lg="4" md="12">
+                    <Col className="mt-4" xl="4" lg="12" md="12">
                         <div className="hospital-detail-box">
                             <div className="header d-flex justify-content-between p-3">
                                 <h4 className="title">About Hospital</h4>
@@ -149,7 +152,7 @@ class HospitalDetail extends React.Component {
                             </div>
                         </div>
                     </Col>
-                    <Col className="mt-4" lg="8" md="12">
+                    <Col className="mt-4" xl="8" lg="12" md="12">
                         <div className="hospital-detail-box d-flex flex-row">
                             <Col className="border-right" lg="7">
                                 <div className="header d-flex justify-content-between mt-3 mb-3">
@@ -425,21 +428,21 @@ class HospitalDetail extends React.Component {
                                                 <img src={user} alt="" />
                                                 <div className="content ml-2">
                                                     <h5 className="title">Sara <small>from NY</small></h5>
-                                                    <p className="desc">Lorem ipsum ipsum ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy onsectetuer</p>
+                                                    <p className="desc m-1">Lorem ipsum ipsum ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy onsectetuer</p>
                                                 </div>
                                             </div>
                                             <div className="item d-flex align-items-md-start">
                                                 <img src={user} alt="" />
                                                 <div className="content ml-2">
                                                     <h5 className="title">Alex <small>from NY</small></h5>
-                                                    <p className="desc">Lorem ipsum ipsum ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy onsectetuer</p>
+                                                    <p className="desc m-1">Lorem ipsum ipsum ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy onsectetuer</p>
                                                 </div>
                                             </div>
                                             <div className="item d-flex align-items-md-start">
                                                 <img src={user} alt="" />
                                                 <div className="content ml-2">
                                                     <h5 className="title">Deby <small>from NY</small></h5>
-                                                    <p className="desc">Lorem ipsum ipsum ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy onsectetuer</p>
+                                                    <p className="desc m-1">Lorem ipsum ipsum ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy onsectetuer</p>
                                                 </div>
                                             </div>
                                         </div>
