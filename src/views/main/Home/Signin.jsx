@@ -18,6 +18,67 @@ import { mapStateToProps, mapDispatchToProps } from "../../../redux/constants";
 
 class Signin extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      field:{
+        email:{
+          value:'',
+          validation:false
+        },
+        password:{
+          value:'',
+          validation:false
+        }
+      },
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    const currentState = this.state;
+    currentState.field[event.target.name].value = event.target.value;
+    this.setState(currentState);
+  }
+
+  handleSubmit(event) {
+    this.validation();
+    event.preventDefault();
+  }
+
+  validation(){
+    const email = (this.state.field.email.value != '' ? false : true);
+    const password = (this.state.field.password.value != '' ?( this.state.field.password.value.length < 6 ? true : false) : true);
+    if(email || password){
+      const currentState = this.state;
+      currentState.field['email'].validation = email;
+      currentState.field['password'].validation = password;
+      this.setState(currentState);
+    }
+    else{
+      this.login();
+    }
+  }
+
+  login(){
+    var data = new FormData();
+    data.append("email", this.state.field.email.value);
+    data.append("password", this.state.field.password.value);
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        console.log(this.responseText);
+      }
+    });
+    
+    xhr.open("POST", "http://api.tebimar.com/api/v1/auth/login");    
+    xhr.send(data);
+  }
+
   render() {
   const isOpen = this.props.modal.name !== null && this.props.modal.name === 'signin' ? true : false;
     return (
@@ -44,25 +105,35 @@ class Signin extends React.Component {
                 </button>
                 </div>
                   <CardBody className="px-lg-5 py-lg-4">
-                    <Form role="form">
-                      <FormGroup className="mb-3">
+                    <Form role="form" onSubmit={this.handleSubmit}>
+                      <FormGroup className={`mb-3 ${this.state.field.email.validation ? 'has-danger' : ''}`}>
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
                               <i className="ni ni-email-83" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Email" type="email" />
+                          <Input
+                            name="email"
+                            value={this.state.field.email.value}
+                            onChange={this.handleChange}
+                            placeholder="Email"
+                            type="email" />
                         </InputGroup>
                       </FormGroup>
-                      <FormGroup>
+                      <FormGroup className={`mb-3 ${this.state.field.password.validation ? 'has-danger' : ''}`}>
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
                               <i className="ni ni-lock-circle-open" />
                             </InputGroupText>
                           </InputGroupAddon>
-                          <Input placeholder="Password" type="password" />
+                          <Input
+                            name="password"
+                            value={this.state.field.password.value}
+                            onChange={this.handleChange}
+                            placeholder="Password"
+                            type="password" />
                         </InputGroup>
                       </FormGroup>
                       <div className="custom-control custom-control-alternative custom-checkbox">
@@ -82,11 +153,9 @@ class Signin extends React.Component {
                         <Button
                           className="my-3 btn-block"
                           color="primary"
-                          type="button"
-                        >
+                          type="submit">
                           Sign in
-                        </Button>
-
+                        </Button> 
                       </div>
                       <div className="text-left">
                         <a className="text-t-green d-block">Forgot Password!</a>
