@@ -4,7 +4,9 @@ import {
     openModal,
     closeModal,
     setGeneral,
-    resetGeneral
+    resetGeneral,
+    setClient,
+    resetClient
 } from "./actions";
 
 export const mapDispatchToProps = dispatch => {
@@ -34,6 +36,6 @@ export const mapStateToProps = (state) => {
     return {
         user: state.user,
         modal: state.modal,
-        general: state.general
+        general: state.general,
     }
 };

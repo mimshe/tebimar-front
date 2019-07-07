@@ -8,7 +8,6 @@ import {
 } from './type';
 
 
-
 export const resetUser = () => ({
     type: RESET_USER,
 });

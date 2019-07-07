@@ -19,6 +19,7 @@ import Signin from "../../views/main/Home/Signin";
 import { connect } from "react-redux";
 import Signup from "../../views/main/Home/Signup";
 import { mapDispatchToProps, mapStateToProps } from "../../redux/constants";
+import UserMenu from "./UserMenu";
 
 class MainNavbar extends React.Component {
 
@@ -132,7 +133,7 @@ class MainNavbar extends React.Component {
                 <Currency />
               </Nav>
 
-              <Nav className="navbar-nav">
+              <Nav className={`navbar-nav ${this.props.user.id ? 'd-none' : 'd-block'}`}>
               <NavItem>
                   <button
                     onClick={() => this.props.modal.name !== 'signup' ?  this.props.openModal('signup'): this.props.closeModal()}
@@ -149,6 +150,9 @@ class MainNavbar extends React.Component {
                     <i className="fa fa-sign-in-alt d-none d-lg-block d-xl-none d-md-none d-sm-none d-xs-none m-0" />
                   </button>
                 </NavItem>
+              </Nav>
+              <Nav className={`navbar-nav ${this.props.user.id ? 'd-block' : 'd-none'}`}>
+                <UserMenu />
               </Nav>
             </UncontrolledCollapse>
           </Container>

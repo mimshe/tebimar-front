@@ -4,14 +4,15 @@ import {
 } from "../actions/type";
 
 export const initialState = {
-    mobile: null,
-    token: null,
-    is_logged: false,
-    name: '',
-    family: '',
-    email:'',
-    refer_code:'',
-    credit: 0
+    name: null,
+    family:null,
+    mobile:null,
+    email:null,
+    country_id:null,
+    updated_at:null,
+    created_at:null,
+    id:null,
+    token:null,
 };
 
 let user = (state = initialState, action = {}) => {
@@ -22,14 +23,15 @@ let user = (state = initialState, action = {}) => {
         case SET_USER:
             return {
                 ...state,
-                mobile: (payload.mobile === undefined) ? state.mobile : payload.mobile,
-                token: (payload.token === undefined) ? state.token : payload.token,
                 name: (payload.name === undefined) ? state.name : payload.name,
-                family: (payload.family === undefined) ? state.family : payload.family,
-                credit: (payload.credit === undefined) ? state.credit : payload.credit,
-                email: (payload.email === undefined) ? state.email : payload.email,
-                refer_code: (payload.refer_code === undefined) ? state.refer_code : payload.refer_code,
-                is_logged: (payload.is_logged === undefined) ? state.is_logged : payload.is_logged,
+                family:(payload.family === undefined) ? state.family : payload.family,
+                mobile:(payload.mobile === undefined) ? state.mobile : payload.mobile,
+                email:(payload.email === undefined) ? state.email : payload.email,
+                country_id:(payload.country_id === undefined) ? state.country_id : payload.country_id,
+                updated_at:(payload.updated_at === undefined) ? state.updated_at : payload.updated_at,
+                created_at:(payload.created_at === undefined) ? state.created_at : payload.created_at,
+                id:(payload.id === undefined) ? state.id : payload.id,
+                token:(payload.token === undefined) ? state.token : payload.token,
             };
 
         case RESET_USER:

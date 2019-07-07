@@ -31,6 +31,7 @@ class Signin extends React.Component {
           validation:false
         }
       },
+      validationErr:''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -68,10 +69,19 @@ class Signin extends React.Component {
 
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
-    
+    var that = this;
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-        console.log(this.responseText);
+        const res = JSON.parse(this.responseText);
+        if(res.status){
+          that.props.setUser(res.data);
+          that.props.closeModal();
+        }
+        else{
+          const currentState = that.state;
+            currentState.validationErr = res.message;
+            that.setState(currentState);
+        }
       }
     });
     
@@ -156,6 +166,9 @@ class Signin extends React.Component {
                           type="submit">
                           Sign in
                         </Button> 
+                      </div>
+                      <div className={`text-center ${this.state.validationErr != '' ? 'd-block' : 'd-none'}`}>
+                        <p className="text-red">{this.state.validationErr}</p>
                       </div>
                       <div className="text-left">
                         <a className="text-t-green d-block">Forgot Password!</a>
