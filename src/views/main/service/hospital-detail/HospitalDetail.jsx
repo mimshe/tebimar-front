@@ -1,6 +1,5 @@
 import React from "react";
 import Navigation from "../Navigation.jsx"
-// reactstrap components
 import {
     Row,
     Col,
@@ -8,24 +7,133 @@ import {
     Container
 } from "reactstrap";
 import { Carousel } from 'antd';
-
 import fa from '../../../../assets/img/language/iran.png';
 import en from '../../../../assets/img/language/united-kingdom.png';
-
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
-
-import user from '../../../../assets/img/theme/team-3-800x800.jpg'
 import Comments from "./Comments.jsx";
 import RecommendedPackages from "./RecommendedPackages.jsx";
 import Physicians from "./Physicians.jsx";
 import Costs from "./Costs.jsx";
 import PlaceInMap from "./PlaceInMap.jsx";
+import MiniComments from "./MiniComments.jsx";
+import Rates from "./Rates.jsx";
 
 class HospitalDetail extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+          id:'',
+          hospital:{
+              detail:{
+                id: '',
+                user_id: '',
+                name: '',
+                description: '',
+                lat: 35.69439,
+                long: 51.42151,
+                address: '',
+                phone: '',
+                created_at: '',
+                updated_at: ''
+              },
+              comments:[],
+              rate:[],
+              gallery:{
+
+              }
+          }
+        };
+    }
+    componentWillMount () {
+        const { id } = this.props.match.params;
+        const currentState = this.state;
+        currentState.id = id;
+        this.setState(currentState);
+        this.getData();
+        console.log(this.state);
+    }
+
+    getData(){
+        this.getDetail();
+        this.getComment();
+        this.getRate();
+        this.getGallery();
+    }
+
+    getDetail(){
+        var that = this;
+        var data = null;
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            const res = JSON.parse(this.responseText);
+            if(res.status){
+                const currentState = that.state;
+                currentState.hospital.detail = res.data;
+                that.setState(currentState);
+            }
+          }
+        });
+        xhr.open("GET", `http://api.tebimar.com/api/v1/hospital/${this.state.id}`);        
+        xhr.send(data);
+    }
+    getComment(){
+        var that = this;
+        var data = null;
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            const res = JSON.parse(this.responseText);
+            if(res.status){
+                const currentState = that.state;
+                currentState.hospital.comments = res.data;
+                that.setState(currentState);
+            }
+          }
+        });
+        xhr.open("GET", `http://api.tebimar.com/api/v1/hospital/${this.state.id}/comment`);        
+        xhr.send(data);
+    }
+    getRate(){
+        var that = this;
+        var data = null;
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            const res = JSON.parse(this.responseText);
+            if(res.status){
+                const currentState = that.state;
+                currentState.hospital.rate = res.data;
+                that.setState(currentState);
+            }
+          }
+        });
+        xhr.open("GET", `http://api.tebimar.com/api/v1/hospital/${this.state.id}/rate`);        
+        xhr.send(data);
+    }
+    getGallery(){
+        var that = this;
+        var data = null;
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            const res = JSON.parse(this.responseText);
+            if(res.status){
+                const currentState = that.state;
+                currentState.hospital.gallery = res.data;
+                that.setState(currentState);
+            }
+          }
+        });
+        xhr.open("GET", `http://api.tebimar.com/api/v1/hospital/${this.state.id}/gallery`);        
+        xhr.send(data);
+    }
+
     render() {
-        const percentage = 66;
         return (
             <Container className="pb-5">
                 <Row className="d-flex flex-row">
@@ -33,7 +141,7 @@ class HospitalDetail extends React.Component {
                     <Col className="mt-4" lg="4" md="12">
                     <div className="hospital-detail-box">
                         <div className="header d-flex justify-content-between p-3">
-                            <h1 className="title">Sadr hospital</h1>
+                            <h1 className="title">{this.state.hospital.detail.name}</h1>
                             <div className="rate-box ml-lg-auto">
                                 <div className="rate">
                                     <i className="fa fa-star"></i>
@@ -49,18 +157,17 @@ class HospitalDetail extends React.Component {
                             <div className="content pl-3 pr-3 pb-3 pt-0">
                                 <div className="item d-flex align-items-md-start p-2">
                                     <i className="fa fa-map-marked-alt"></i>
-                                    <span className="ml-3">Iran - Tehran - Meydan Teymouri Box Coworking space</span>
+                                    <span className="ml-3">{this.state.hospital.detail.address}</span>
                                 </div>
                                 <div className="item d-flex align-items-md-start p-2">
                                     <i className="fa fa-phone"></i>
-                                    <span className="ml-3">+98 021 3524 1479</span>
+                                    <span className="ml-3">{this.state.hospital.detail.phone}</span>
                                 </div>
                                 <Button className="mt-2" color="t-default" block outline type="button">
                                     deselect
                                 </Button>                            
                             </div>
-
-                            <PlaceInMap />
+                            <PlaceInMap lat={this.state.hospital.detail.lat} lng={this.state.hospital.detail.long} />
                         </div>
                     </div>
                     </Col>
@@ -108,9 +215,7 @@ class HospitalDetail extends React.Component {
                             </div>
                             <div className="body">
                                 <div className="content pl-3 pr-3 pb-3 pt-0">
-                                    <p className="mb-0 pl-2 pr-2">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                    </p>  
+                                    <p className="description mb-0 pl-2 pr-2">{this.state.hospital.detail.description}</p>  
                                     <div className="item d-flex align-items-md-start p-2">
                                         <span className="item-title">Spoken Lan</span>
                                         <span className="ml-2">
@@ -154,262 +259,15 @@ class HospitalDetail extends React.Component {
                     </Col>
                     <Col className="mt-4" xl="8" lg="12" md="12">
                         <div className="hospital-detail-box d-flex flex-row">
-                            <Col className="border-right" lg="7">
+                            <Col
+                            className={`${this.state.hospital.comments.length <= 0 ? 'col-lg-12' : 'border-right'}`}
+                            lg="7">
                                 <div className="header d-flex justify-content-between mt-3 mb-3">
-                                    <h4 className="title">About Hospital</h4>
+                                    <h4 className="title">Rate Hospital</h4>
                                 </div>
                                 <div className="body">
                                     <div className="content pl-3 pr-3 pb-3 pt-0">
-                                        <Row>
-                                            <Col className="p-2 text-center" lg="3" md="3" sm="4" xs="6">
-                                                <div className="circle-progress">
-                                                    <CircularProgressbar
-                                                        value="6.2"
-                                                        text="6.2"
-                                                        styles={{
-                                                            root: {},
-                                                            path: {
-                                                                stroke: `rgb(24, 187, 24, ${percentage / 100})`,
-                                                                strokeLinecap: 'butt',
-                                                                transition: 'stroke-dashoffset 0.5s ease 0s',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            trail: {
-                                                                stroke: '#e0e0e0',
-                                                                strokeLinecap: 'butt',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            text: {
-                                                                fill: '#808080',
-                                                                fontSize: '16px',
-                                                            },
-                                                            background: {
-                                                                fill: '#3e98c7',
-                                                            },
-                                                            }} />
-                                                </div>
-                                                <h5 className="mb-0 mt-1 text-t-gray">Cleaners</h5>
-                                            </Col>
-                                            <Col className="p-2 text-center" lg="3" md="3" sm="4" xs="6">
-                                                <div className="circle-progress">
-                                                    <CircularProgressbar
-                                                        value="6.2"
-                                                        text="6.2"
-                                                        styles={{
-                                                            root: {},
-                                                            path: {
-                                                                stroke: `rgb(24, 187, 24, ${percentage / 100})`,
-                                                                strokeLinecap: 'butt',
-                                                                transition: 'stroke-dashoffset 0.5s ease 0s',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            trail: {
-                                                                stroke: '#e0e0e0',
-                                                                strokeLinecap: 'butt',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            text: {
-                                                                fill: '#808080',
-                                                                fontSize: '16px',
-                                                            },
-                                                            background: {
-                                                                fill: '#3e98c7',
-                                                            },
-                                                            }} />
-                                                </div>
-                                                <h5 className="mb-0 mt-1 text-t-gray">Cleaners</h5>
-                                            </Col>
-                                            <Col className="p-2 text-center" lg="3" md="3" sm="4" xs="6">
-                                                <div className="circle-progress">
-                                                    <CircularProgressbar
-                                                        value="6.2"
-                                                        text="6.2"
-                                                        styles={{
-                                                            root: {},
-                                                            path: {
-                                                                stroke: `rgb(24, 187, 24, ${percentage / 100})`,
-                                                                strokeLinecap: 'butt',
-                                                                transition: 'stroke-dashoffset 0.5s ease 0s',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            trail: {
-                                                                stroke: '#e0e0e0',
-                                                                strokeLinecap: 'butt',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            text: {
-                                                                fill: '#808080',
-                                                                fontSize: '16px',
-                                                            },
-                                                            background: {
-                                                                fill: '#3e98c7',
-                                                            },
-                                                            }} />
-                                                </div>
-                                                <h5 className="mb-0 mt-1 text-t-gray">Cleaners</h5>
-                                            </Col>
-                                            <Col className="p-2 text-center" lg="3" md="3" sm="4" xs="6">
-                                                <div className="circle-progress">
-                                                    <CircularProgressbar
-                                                        value="6.2"
-                                                        text="6.2"
-                                                        styles={{
-                                                            root: {},
-                                                            path: {
-                                                                stroke: `rgb(24, 187, 24, ${percentage / 100})`,
-                                                                strokeLinecap: 'butt',
-                                                                transition: 'stroke-dashoffset 0.5s ease 0s',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            trail: {
-                                                                stroke: '#e0e0e0',
-                                                                strokeLinecap: 'butt',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            text: {
-                                                                fill: '#808080',
-                                                                fontSize: '16px',
-                                                            },
-                                                            background: {
-                                                                fill: '#3e98c7',
-                                                            },
-                                                            }} />
-                                                </div>
-                                                <h5 className="mb-0 mt-1 text-t-gray">Cleaners</h5>
-                                            </Col>
-                                            <Col className="p-2 text-center" lg="3" md="3" sm="4" xs="6">
-                                                <div className="circle-progress">
-                                                    <CircularProgressbar
-                                                        value="6.2"
-                                                        text="6.2"
-                                                        styles={{
-                                                            root: {},
-                                                            path: {
-                                                                stroke: `rgb(24, 187, 24, ${percentage / 100})`,
-                                                                strokeLinecap: 'butt',
-                                                                transition: 'stroke-dashoffset 0.5s ease 0s',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            trail: {
-                                                                stroke: '#e0e0e0',
-                                                                strokeLinecap: 'butt',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            text: {
-                                                                fill: '#808080',
-                                                                fontSize: '16px',
-                                                            },
-                                                            background: {
-                                                                fill: '#3e98c7',
-                                                            },
-                                                            }} />
-                                                </div>
-                                                <h5 className="mb-0 mt-1 text-t-gray">Cleaners</h5>
-                                            </Col>
-                                            <Col className="p-2 text-center" lg="3" md="3" sm="4" xs="6">
-                                                <div className="circle-progress">
-                                                    <CircularProgressbar
-                                                        value="6.2"
-                                                        text="6.2"
-                                                        styles={{
-                                                            root: {},
-                                                            path: {
-                                                                stroke: `rgb(24, 187, 24, ${percentage / 100})`,
-                                                                strokeLinecap: 'butt',
-                                                                transition: 'stroke-dashoffset 0.5s ease 0s',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            trail: {
-                                                                stroke: '#e0e0e0',
-                                                                strokeLinecap: 'butt',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            text: {
-                                                                fill: '#808080',
-                                                                fontSize: '16px',
-                                                            },
-                                                            background: {
-                                                                fill: '#3e98c7',
-                                                            },
-                                                            }} />
-                                                </div>
-                                                <h5 className="mb-0 mt-1 text-t-gray">Cleaners</h5>
-                                            </Col>
-                                            <Col className="p-2 text-center" lg="3" md="3" sm="4" xs="6">
-                                                <div className="circle-progress">
-                                                    <CircularProgressbar
-                                                        value="6.2"
-                                                        text="6.2"
-                                                        styles={{
-                                                            root: {},
-                                                            path: {
-                                                                stroke: `rgb(24, 187, 24, ${percentage / 100})`,
-                                                                strokeLinecap: 'butt',
-                                                                transition: 'stroke-dashoffset 0.5s ease 0s',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            trail: {
-                                                                stroke: '#e0e0e0',
-                                                                strokeLinecap: 'butt',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            text: {
-                                                                fill: '#808080',
-                                                                fontSize: '16px',
-                                                            },
-                                                            background: {
-                                                                fill: '#3e98c7',
-                                                            },
-                                                            }} />
-                                                </div>
-                                                <h5 className="mb-0 mt-1 text-t-gray">Cleaners</h5>
-                                            </Col>
-                                            <Col className="p-2 text-center" lg="3" md="3" sm="4" xs="6">
-                                                <div className="circle-progress">
-                                                    <CircularProgressbar
-                                                        value="6.2"
-                                                        text="6.2"
-                                                        styles={{
-                                                            root: {},
-                                                            path: {
-                                                                stroke: `rgb(24, 187, 24, ${percentage / 100})`,
-                                                                strokeLinecap: 'butt',
-                                                                transition: 'stroke-dashoffset 0.5s ease 0s',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            trail: {
-                                                                stroke: '#e0e0e0',
-                                                                strokeLinecap: 'butt',
-                                                                transform: 'rotate(0.25turn)',
-                                                                transformOrigin: 'center center',
-                                                            },
-                                                            text: {
-                                                                fill: '#808080',
-                                                                fontSize: '16px',
-                                                            },
-                                                            background: {
-                                                                fill: '#3e98c7',
-                                                            },
-                                                            }} />
-                                                </div>
-                                                <h5 className="mb-0 mt-1 text-t-gray">Cleaners</h5>
-                                            </Col>
-                                        </Row>
+                                        <Rates data={this.state.hospital.rate.find(x=> x.id == this.state.id)} />
 
                                         <Button className="mt-2" color="t-default" block outline type="button">
                                             Log in to Rate
@@ -417,36 +275,15 @@ class HospitalDetail extends React.Component {
                                     </div>
                                 </div>
                             </Col>
-                            <Col lg="5" className="d-none d-lg-block d-xl-block d-md-block d-sm-none d-xs-none">
+                            <Col
+                                lg="5"
+                                className={`${this.state.hospital.comments.length <= 0 ? 'd-none' : 'd-none d-lg-block d-xl-block d-md-block d-sm-none d-xs-none'}`}>
                                 <div className="header d-flex justify-content-between mt-3 mb-3">
                                     <h4 className="title">Comments</h4>
                                 </div>
                                 <div className="body">
                                     <div className="content pl-2 pr-2 pb-3 pt-0">
-                                        <div className="mini-comment-box">
-                                            <div className="item d-flex align-items-md-start">
-                                                <img src={user} alt="" />
-                                                <div className="content ml-2">
-                                                    <h5 className="title">Sara <small>from NY</small></h5>
-                                                    <p className="desc m-1">Lorem ipsum ipsum ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy onsectetuer</p>
-                                                </div>
-                                            </div>
-                                            <div className="item d-flex align-items-md-start">
-                                                <img src={user} alt="" />
-                                                <div className="content ml-2">
-                                                    <h5 className="title">Alex <small>from NY</small></h5>
-                                                    <p className="desc m-1">Lorem ipsum ipsum ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy onsectetuer</p>
-                                                </div>
-                                            </div>
-                                            <div className="item d-flex align-items-md-start">
-                                                <img src={user} alt="" />
-                                                <div className="content ml-2">
-                                                    <h5 className="title">Deby <small>from NY</small></h5>
-                                                    <p className="desc m-1">Lorem ipsum ipsum ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy onsectetuer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        <MiniComments comments={this.state.hospital.comments} />
                                         <Button className="mt-2 text-t-black" color="secondary" block outline type="button">
                                             <span>more comment</span>
                                             <i className="fa fa-chevron-down ml-2"></i>
@@ -460,7 +297,7 @@ class HospitalDetail extends React.Component {
                     <Physicians />
                     <RecommendedPackages />
                     <Costs />
-                    <Comments />
+                    <Comments comments={this.state.hospital.comments} />
                 </Row>
             </Container>
         );

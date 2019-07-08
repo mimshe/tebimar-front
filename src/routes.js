@@ -82,7 +82,7 @@ var routes = [
     layout: "/main"
   },
   {
-    path: "/service/hospital-detail",
+    path: "/service/hospital-detail/:id",
     name: " ChooseCity",
     icon: "ni ni-circle-08 text-pink",
     component:  HospitalDetail,

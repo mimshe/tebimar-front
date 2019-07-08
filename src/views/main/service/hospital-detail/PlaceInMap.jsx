@@ -19,12 +19,12 @@ import {defaults as defaultInteractions, Pointer as PointerInteraction} from 'ol
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
 import {TileJSON, Vector as VectorSource} from 'ol/source.js';
 import {Fill, Icon, Stroke, Style} from 'ol/style.js';
+import {transform,fromLonLat} from 'ol/proj.js';
 
 class PlaceInMap extends React.Component {
 
     componentDidMount(){
-        var pointFeature = new Feature(new Point([0, 0]));
-
+        var pointFeature = new Feature(new Point(transform([this.props.lng, this.props.lat], 'EPSG:4326','EPSG:3857')));
 
         const map = new Map({
             target: 'map',
@@ -56,8 +56,8 @@ class PlaceInMap extends React.Component {
               })
             ],
             view: new View({
-              center: [0, 0],
-              zoom: 0
+              center: fromLonLat([this.props.lng, this.props.lat]),
+              zoom: 14
             })
           });
     }
