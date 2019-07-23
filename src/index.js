@@ -5,8 +5,10 @@ import {Provider} from "react-redux";
 import store from "../src/redux/store";
 import {PersistGate} from "redux-persist/integration/react";
 import "assets/vendor/nucleo/css/nucleo.css";
-import "assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
+// import "assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
+import 'font-awesome/css/font-awesome.min.css'
+
 
 import AdminLayout from "layouts/Admin.jsx";
 import AuthLayout from "layouts/Auth.jsx";

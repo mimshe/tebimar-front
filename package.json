@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/argon-dashboard-react/issues"
   },
-  "homepage": "https://demos.creative-tim.com/argon-dashboard-react/",
+  "homepage": ".",
   "scripts": {
     "start": "PORT=3002 react-scripts start",
     "build": "react-scripts build",
@@ -46,6 +46,7 @@
     "antd": "^3.19.3",
     "chart.js": "2.7.3",
     "classnames": "2.2.6",
+    "font-awesome": "^4.7.0",
     "moment": "2.24.0",
     "node-sass": "4.11.0",
     "nouislider": "13.1.1",

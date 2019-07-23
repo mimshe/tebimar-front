@@ -16,6 +16,8 @@ import Costs from "./Costs.jsx";
 import PlaceInMap from "./PlaceInMap.jsx";
 import MiniComments from "./MiniComments.jsx";
 import Rates from "./Rates.jsx";
+import { connect } from "react-redux";
+import { mapDispatchToProps, mapStateToProps } from "../../../../redux/constants";
 
 class HospitalDetail extends React.Component {
 
@@ -269,8 +271,22 @@ class HospitalDetail extends React.Component {
                                     <div className="content pl-3 pr-3 pb-3 pt-0">
                                         <Rates data={this.state.hospital.rate.find(x=> x.id == this.state.id)} />
 
-                                        <Button className="mt-2" color="t-default" block outline type="button">
+                                        <Button
+                                            className={`mt-2 ${this.props.user.id ? 'd-none' : 'd-block'}`}
+                                            color="t-default"
+                                            block
+                                            outline
+                                            type="button">
                                             Log in to Rate
+                                        </Button>
+
+                                        <Button
+                                            className={`mt-2 ${this.props.user.id ? 'd-block' : 'd-none'}`}
+                                            color="t-default"
+                                            block
+                                            outline
+                                            type="button">
+                                            Rate
                                         </Button>
                                     </div>
                                 </div>
@@ -304,4 +320,5 @@ class HospitalDetail extends React.Component {
     }
 }
 
-export default HospitalDetail;
+export default connect(mapStateToProps,mapDispatchToProps)(HospitalDetail);
+
